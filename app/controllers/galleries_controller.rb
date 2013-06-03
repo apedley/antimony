@@ -7,9 +7,9 @@ class GalleriesController < ApplicationController
 
   def show
     if @gallery.user == current_user
-      @photos = @gallery.photos
+      @photos = @gallery.photos.processed
     else
-      @photos = @gallery.public_photos
+      @photos = @gallery.public_photos.processed
     end
     respond_to do |type|
       type.html

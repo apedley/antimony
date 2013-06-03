@@ -1,6 +1,6 @@
+require 'sidekiq/web'
 Antimony::Application.routes.draw do
-  
-
+  mount Sidekiq::Web, at: "/sidekiq"
   resources :galleries do
     member do
       put 'add_photo', :as => 'add_photo_to'

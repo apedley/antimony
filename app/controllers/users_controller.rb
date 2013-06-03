@@ -13,9 +13,9 @@ class UsersController < ApplicationController
   def photos
     @user = User.find(params[:id])
     if @user == current_user
-      @photos = @user.photos.page(params[:page])
+      @photos = @user.photos.processed.page(params[:page])
     else
-      @photos = Kaminari.paginate_array(@user.public_photos).page(params[:page]).per(36)
+      @photos = Kaminari.paginate_array(@user.public_photos.processed).page(params[:page]).per(36)
     end
   end
   def galleries

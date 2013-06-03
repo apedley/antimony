@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130603083515) do
+ActiveRecord::Schema.define(:version => 20130603093016) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -47,13 +47,12 @@ ActiveRecord::Schema.define(:version => 20130603083515) do
 
   create_table "photos", :force => true do |t|
     t.string   "title"
-    t.string   "remote_image_url"
     t.integer  "user_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.string   "image"
     t.boolean  "public"
-    t.string   "image_tmp"
+    t.boolean  "image_processing"
   end
 
   add_index "photos", ["user_id"], :name => "index_photos_on_user_id"

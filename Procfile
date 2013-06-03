@@ -1,2 +1,2 @@
 web:      bundle exec thin start
-worker:   bundle exec rake jobs:work
+worker:   bundle exec sidekiq -q photouploads

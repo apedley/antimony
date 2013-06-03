@@ -3,7 +3,7 @@ class Photo < ActiveRecord::Base
   has_and_belongs_to_many :galleries
   attr_accessible :title, :image, :remote_image_url, :gallery_ids, :public, :image_processing
   mount_uploader :image, ImageUploader
-  store_in_background :image
+  process_in_background :image
 
   # default_scope where(:image_processing => nil)
   paginates_per 36
@@ -21,6 +21,10 @@ class Photo < ActiveRecord::Base
 
   def self.public
     where(:public => true)
+  end
+
+  def self.processed
+    where(:image_processing => nil)
   end
 
 end

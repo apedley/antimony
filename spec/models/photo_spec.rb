@@ -13,4 +13,9 @@ describe Photo do
     private_photo = create(:photo, public: false)
     expect(Photo.public).to_not include(private_photo)
   end
+  it "returns processed images" do
+    photo = create(:photo)
+    unfinished_photo = create(:photo, image_processing: true)
+    expect(Photo.processed).to_not include(unfinished_photo)
+  end
 end

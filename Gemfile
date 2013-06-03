@@ -12,7 +12,9 @@ gem 'mini_magick'
 gem 'fog'
 gem 'carrierwave'
 gem 'carrierwave_backgrounder'
-gem 'delayed_job_active_record'
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
 gem 'foreman'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

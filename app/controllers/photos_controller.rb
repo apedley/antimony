@@ -22,7 +22,7 @@ class PhotosController < ApplicationController
   end
 
   def index
-    @photos = Photo.public.page(params[:page])
+    @photos = Photo.public.processed.page(params[:page])
   end
 
   def destroy
