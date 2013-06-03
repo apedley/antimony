@@ -1,9 +1,11 @@
 class Photo < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :galleries
-  attr_accessible :title, :image, :remote_image_url, :gallery_ids, :public
+  attr_accessible :title, :image, :remote_image_url, :gallery_ids, :public, :image_processing
   mount_uploader :image, ImageUploader
+  store_in_background :image
 
+  # default_scope where(:image_processing => nil)
   paginates_per 36
 
   # Custom validator for file size
