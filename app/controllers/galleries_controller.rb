@@ -1,6 +1,7 @@
 class GalleriesController < ApplicationController
   before_filter :authenticate_user!, :only => [ :new, :create, :edit, :update ]
   before_filter :find_gallery, :only => [:edit, :update, :show, :destroy]
+  # layout 'single', :only => [:fun_edit]
   def index
     @galleries = Gallery.public.limit(16)
   end
@@ -52,6 +53,7 @@ class GalleriesController < ApplicationController
       end
     end
   end 
+
 
   def destroy
     authenticate_owner!
