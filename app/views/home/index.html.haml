@@ -1,0 +1,10 @@
+
+%h3 Galleries
+%ul.row.galleries-list
+  - @galleries.each do |gallery|
+    = render :partial => "galleries/gallery_thumb", :locals => { :gallery => gallery}
+
+%h3 Photos
+%ul.thumbnails
+  - @photos.each do |photo|
+    = render :partial => "photos/thumb", :locals => { :photo => photo }

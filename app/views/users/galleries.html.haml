@@ -1,0 +1,11 @@
+- content_for :subtitle do
+  = "User Galleries: #{@user.username}"
+%ul.row.galleries-list
+  %li.gallery_thumb.span3
+    = link_to image_tag('/assets/newgallery.png'), new_gallery_path
+  - @galleries.each do |gallery|
+    = render :partial => "galleries/gallery_thumb", :locals => { :gallery => gallery}
+  %li.gallery_thumb.span3
+    = link_to image_tag('nogallery.png'), user_uncategorized_photos_path(@user)
+    %h4
+      = link_to 'Not In Gallery', user_uncategorized_photos_path(@user)

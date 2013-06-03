@@ -1,0 +1,30 @@
+.navbar
+  .navbar-inner
+    / %a.brand{href: "#"}
+    /   Antimony
+    %ul.nav
+      %li{:class => "#{'active' if current_page?(root_path)}"}= link_to 'Home', root_path
+      %li{:class => "#{'active' if controller_name == 'photos'}"}= link_to 'Photos', photos_path
+      %li{:class => "#{'active' if controller_name == 'galleries'}"}= link_to 'Galleries', galleries_path
+      
+    %ul.nav.pull-right
+      - unless user_signed_in?
+        %li= link_to 'Sign Up', new_user_registration_path
+        %li= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2)
+        %li= link_to 'Sign In', new_user_session_path
+      - if user_signed_in?
+        %li.divider-vertical
+        %li{:class => "#{'active' if controller_name == 'users' and action_name == 'galleries'}"}= link_to 'My Galleries', user_galleries_path(current_user)
+        %li{:class => "#{'active' if controller_name == 'users' and action_name == 'photos'}"}= link_to 'My Photos', user_photos_path(current_user)
+        %li.dropdown
+          %a.dropdown-toggle{href: "#", "data-toggle" => "dropdown"}
+            = "Manage"
+            %b.caret
+          %ul.dropdown-menu
+            %li= link_to 'New Photo', new_photo_path
+            %li= link_to 'New Gallery', new_gallery_path
+            %li= link_to 'Edit Photos', edit_photos_path(current_user)
+            %li.divider
+            %li= link_to 'My Profile', current_user
+            %li= link_to 'Sign Out', destroy_user_session_path, :method => :delete
+

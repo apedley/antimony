@@ -1,0 +1,11 @@
+- content_for :subtitle do
+  = "Gallery: #{@gallery.name}"
+%h3
+  = @gallery.name
+  - if @gallery.user == current_user
+    = link_to 'Edit', edit_gallery_path(@gallery), :class => 'btn'
+%h4.author
+  = link_to @gallery.user.username, @gallery.user
+%ul.thumbnails
+  - @photos.each do |photo|
+    = render :partial => "photos/thumb", :locals => { :photo => photo }

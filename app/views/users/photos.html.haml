@@ -1,0 +1,11 @@
+- content_for :subtitle do
+  = "User Photos: #{@user.username}"
+
+%ul.row.photos-list
+  - @photos.each do |photo|
+    = render :partial => "photos/thumb", :locals => { :photo => photo }
+#bottom-links
+  = link_to_next_page @photos, 'More', :class => 'more-link'
+  - if current_user == @user
+    = link_to 'New Photo', new_photo_path, :class => 'btn btn-primary'
+    = link_to 'Edit Photos', edit_photos_path(current_user), :class => 'btn btn-warning'

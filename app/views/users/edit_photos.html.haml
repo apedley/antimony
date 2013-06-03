@@ -1,0 +1,23 @@
+%h2 Photos (Click to Edit)
+%ul.thumbnails
+  - @photos.each do |photo|
+    %div.deletePhotoModal.modal.hide.fade{:id => "deleteModal#{photo.id}"}
+      .modal-header
+        %button.close{"data-dismiss" => "modal", "type" => "button"}
+          x
+
+      .modal-body
+        = image_tag(photo.image_url(:large_thumb).to_s)
+      .modal-footer
+        = form_for photo, :html => { :class => 'form-inline'} do |f|
+          = f.text_field :title, :placeholder => "Title", :class => 'input-medium'
+          %label.checkbox
+            = f.check_box :public
+            Public
+          %button.btn.btn-success
+            Save
+          = link_to 'Delete', photo, :method => :delete, :class => 'btn btn-danger'
+          %button.btn{"data-dismiss" => "modal", "type" => "button"}
+            Cancel
+    %li.span2.delete_image_thumbnail{:id => "#{photo.id}"}
+      = image_tag(photo.image_url(:thumb).to_s)

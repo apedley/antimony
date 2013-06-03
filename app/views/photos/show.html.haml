@@ -1,0 +1,12 @@
+%p= @photo.title
+%p= image_tag @photo.image_url.to_s
+
+- if @photo.user == current_user
+  %p= link_to 'Delete this photo', @photo, method: :delete
+  %p= link_to 'Edit this photo', edit_photo_path(@photo)
+- unless @photo.galleries.empty?
+  %p
+    Galleries that include this photo:
+    %ul
+      - @photo.galleries.each do |gallery|
+        = render :partial => "galleries/gallery_thumb", :locals => { :gallery => gallery}

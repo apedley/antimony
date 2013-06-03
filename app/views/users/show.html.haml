@@ -1,0 +1,15 @@
+- content_for :subtitle do
+  = "User: #{@user.username}"
+%h2= "Profile: #{@user.username}"
+%h3 Galleries
+%ul.row.galleries-list
+  - @galleries.each do |gallery|
+    = render :partial => "galleries/gallery_thumb", :locals => { :gallery => gallery}
+  %li.gallery_thumb.span3
+    = link_to image_tag('nopreview.png'), user_uncategorized_photos_path(@user)
+    %h4
+      = link_to 'Uncategorized', user_uncategorized_photos_path(@user)
+%h3 Photos
+%ul.thumbnails
+  - @photos.each do |photo|
+    = render :partial => "photos/thumb", :locals => { :photo => photo }

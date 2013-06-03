@@ -1,0 +1,144 @@
+$text-color: #2C3E50;
+// $highlight-color: #1dd2af;
+$highlight-color: #0099dd;
+$info-color: desaturate($highlight-color, 60%);
+body {
+  padding-top: 35px;
+}
+.subhead {
+  padding-bottom: 0;
+  margin-bottom: 9px;
+} 
+
+.subhead h1 {
+  font-size: 54px;
+  line-height: 54px;
+  a {
+    color: $text-color;
+
+    &:hover, &:focus {
+      color: $text-color;
+      text-decoration: none;
+    }
+  }
+}
+
+.subhead > div:first-child {
+  min-height: 100px;
+}
+
+#flash {
+}
+
+ul {
+  list-style-type: none;
+}
+
+li.gallery_thumb {
+  text-align: center;
+  a {
+
+    color: $text-color;
+    &:hover, &:focus {
+      color: $highlight-color;
+      text-decoration:none;
+    }
+  }
+}
+
+h4.new_link {
+  a {
+    color: $text-color;
+    &:hover, &:focus {
+      color: $highlight-color;
+      text-decoration: none;
+    }
+  }
+}
+
+ul.photos-list {
+  margin: 0;
+}
+ul.galleries-list {
+  margin: 0;
+}
+
+li.photo_thumb {
+  margin-right: 20px;
+  margin-left: 0;
+}
+
+li.gallery_thumb {
+  margin-right: 20px;
+  margin-left: 0;  
+
+}
+
+
+#gallery_name {
+  display: inline;
+}
+
+.fancyboxPrepend {
+  display: none;
+}
+
+footer {
+  background: $text-color;
+  color: #ccc;
+  margin-top: 40px;
+  margin-bottom: 100px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+#bottom-links {
+  text-align: center;
+  margin-top: 50px;
+}
+.more-link {
+  color: $text-color;
+  text-align: center;
+  width: 150px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 25px;
+  &:hover, &:focus {
+    color: lighten($text-color, 20%);
+    text-decoration: none;
+    border-bottom: 2px solid lighten($text-color, 20%);
+  }
+}
+.selectable_photo input, .selectable_gallery input {
+  display: none;
+}
+
+.selectable_gallery {
+  text-align:center;
+}
+
+.selected {
+  border-color: $highlight-color;
+  h4 {
+    font-weight: bold;
+  }
+}
+
+.deletePhotoModal {
+  .modal-body, .modal-footer {
+    text-align: center
+  }
+}
+h4.author {
+  a {
+    color: $info-color;
+  }
+  font-size: 16px;
+}
+ul.thumbnails {
+  margin-top:20px;
+}
+div#form_errors {
+  width: 55%;
+
+}

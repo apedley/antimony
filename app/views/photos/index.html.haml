@@ -1,0 +1,5 @@
+%ul.row.photos-list
+  - @photos.each do |photo|
+    = render :partial => "photos/thumb", :locals => { :photo => photo }
+#bottom-links
+  = link_to_next_page @photos, 'More', :class => 'more-link'

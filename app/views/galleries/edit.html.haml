@@ -1,0 +1,25 @@
+= form_for @gallery, :html => { :class => 'form-inline' } do |f|
+  %fieldset
+    .control-group
+      .controls
+        = f.text_field :name, :class => 'input-large'
+      .controls
+        %label.checkbox
+          = f.check_box :public, :class => 'input'
+          Public
+    .control-group
+      .controls
+        .form-buttons
+          = f.submit 'Save', :class => 'btn btn-primary'
+
+%h4 Photos (Click to Remove)
+%ul.thumbnails
+  - @gallery.photos.each do |photo|
+    %li.span2
+      = link_to image_tag(photo.image_url(:thumb)), remove_photo_from_gallery_path(:photo => photo.id), :method => :put,:class => 'thumbnail'
+%h4 Add Photos (Click to Add)
+%ul.thumbnails
+  - current_user.photos_not_in(@gallery).each do |photo|
+    %li.span2
+      = link_to image_tag(photo.image_url(:thumb)), add_photo_to_gallery_path(:photo => photo.id), :method => :put, :class => 'thumbnail'
+%h4= link_to 'Delete Gallery', @gallery, :method => :delete

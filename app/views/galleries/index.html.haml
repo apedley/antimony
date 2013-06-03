@@ -1,0 +1,6 @@
+- content_for :subtitle do
+  Public Galleries
+
+%ul.row
+  - @galleries.each do |gallery|
+    = render :partial => "galleries/gallery_thumb", :locals => { :gallery => gallery}

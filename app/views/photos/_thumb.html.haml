@@ -1,0 +1,12 @@
+%li.span2
+  %a{:href => photo.image_url.to_s, :rel => "fbgroup", :class => "fbGallery thumbnail", :title => photo.title}
+    = image_tag(photo.image_url(:thumb).to_s)
+
+
+  %div.modal.hide.fade{:id => "imgModal#{photo.id}"}
+    .modal-header
+      %h3 Header
+    .modal-body
+      = image_tag photo.image_url.to_s
+    .modal-footer
+      %p footer

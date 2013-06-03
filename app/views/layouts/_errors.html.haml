@@ -1,0 +1,11 @@
+- if target.errors.any?
+  .alert.alert-error#form_errors
+    %a.close
+      x
+    %strong
+      Error
+    - target.errors.full_messages.each do |message|
+      %p.text-error= message
+  / %ul
+  /   - target.errors.full_messages.each do |message|
+  /     %li= message

@@ -1,0 +1,7 @@
+- content_for :subtitle do
+  = "Uncategorized Photos: #{@user.username}"
+%h4.new_link
+  = link_to 'New Photo', new_photo_path
+%ul.row.photos-list
+  - @photos.each do |photo|
+    = render :partial => "photos/thumb", :locals => { :photo => photo }

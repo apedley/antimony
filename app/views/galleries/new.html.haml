@@ -1,0 +1,28 @@
+- if (@photos.empty?)
+  %p Start by uploading some photos!
+  %p= link_to "New Photo", new_photo_path
+- else
+  = form_for @gallery, :html => { :class => 'form-horizontal' } do |f|
+    %fieldset
+      %legend
+        New Gallery
+      .control-group
+        = f.label :name, :class => 'control-label'
+        .controls
+          = f.text_field :name, :class => 'input-large'
+      .control-group
+        = f.label :public, "Public", :class => 'control-label'
+        .controls
+          = f.check_box :public, :class => 'input'
+      .control-group
+        .controls
+          %ul.thumbnails
+            - @photos.each do |photo|
+              %li.span2
+                %div.thumbnail.selectable_photo{:id => "#{photo.id}"}
+                  = image_tag photo.image_url(:thumb)
+                  = check_box_tag "gallery[photo_ids][]", photo.id, false, {:id => "cb#{photo.id}"}
+      .control-group
+        .controls
+          .form-buttons
+            = f.submit 'Save', :class => 'btn btn-primary'

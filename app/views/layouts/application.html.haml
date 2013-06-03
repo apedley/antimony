@@ -1,0 +1,43 @@
+!!!Doctype
+%html
+  %head
+    = stylesheet_link_tag 'application'
+    = csrf_meta_tags
+    %title
+      = "Antimony | "
+      = content_for?(:subtitle) ? yield(:subtitle) : "Image Gallery"
+  %body
+    .container
+      %header.jumbotron.subhead#overview
+        .row
+          %h1
+            = link_to 'Antimony', root_path
+            %p.lead
+              = content_for?(:subtitle) ? yield(:subtitle) : "Image Gallery"
+      .row
+        = render :partial => "layouts/nav"
+      
+      #flash.row
+        - if flash[:alert]
+          %div.alert.alert-block.span4.offset3
+            %a.close x
+            %h4 Alert
+            %p=flash[:alert]
+        - if flash[:notice]
+          %div.alert.alert-info.span4.offset3
+            %a.close x
+            %strong
+              Information
+            =flash[:notice]        
+      #main.row
+        =yield
+      %footer.row
+        .navbar
+          .navbar-inner
+            %a.brand
+              &copy;
+              = Time.now.year
+            %ul.nav.pull-right
+              %li= link_to 'Antimony', root_path
+            
+    = javascript_include_tag "application"
