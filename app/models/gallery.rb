@@ -4,6 +4,8 @@ class Gallery < ActiveRecord::Base
   has_and_belongs_to_many :photos
   belongs_to :user
   paginates_per 50
+  validates :user, :presence => true
+  validates :name, :presence => true, :length => { :in => 2..80 }
   
   def cover_photo_url
     if self.photos.empty?

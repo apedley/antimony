@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Allows logins by username or email
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
@@ -40,6 +41,8 @@ class User < ActiveRecord::Base
       where(conditions).first
     end
   end
+
+  # TODO: Look at this default code for google oauth2 find method
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
     data = access_token.info
     user = User.where(:email => data["email"]).first

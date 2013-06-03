@@ -1,5 +1,5 @@
 %li.span2
-  %a{:href => photo.image_url.to_s, :rel => "fbgroup", :class => "fbGallery thumbnail", :title => photo.title}
+  %a{:href => photo.image_url.to_s, :rel => "fbgroup", :class => "fbGallery thumbnail", :title => photo.title, :id => "photoLink#{photo.id}"}
     = image_tag(photo.image_url(:thumb).to_s)
 
 

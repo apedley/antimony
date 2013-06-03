@@ -32,6 +32,7 @@ group :test do
   gem 'factory_girl'
   gem 'factory_girl_rails'
   gem 'capybara'
+  gem "capybara-webkit"
   gem 'guard-rspec'
   gem 'rb-inotify', :require => false
   gem 'libnotify'

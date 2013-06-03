@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe User do
   it { build_stubbed(:user).should be_valid }
+  it { build_stubbed(:user, email: nil).should_not be_valid }
 
 
   it "should return public photos" do

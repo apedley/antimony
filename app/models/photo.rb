@@ -6,13 +6,17 @@ class Photo < ActiveRecord::Base
 
   paginates_per 36
 
+  # Custom validator for file size
   validates :image,
     :presence => true,
     :file_size => {
       :maximum => 1.0.megabytes.to_i
     }
+
   validates :title,
-    :presence => true
+    :presence => true,
+    :length => { :in => 2..80 }
+
   def self.public
     where(:public => true)
   end

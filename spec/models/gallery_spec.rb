@@ -2,8 +2,11 @@ require 'spec_helper'
 
 describe Gallery do
   it { build_stubbed(:gallery).should be_valid }
-  it { build_stubbed(:gallery).user.should_not be(nil) }
-  
+  it { build_stubbed(:gallery, user: nil).should_not be_valid }
+  it { build_stubbed(:gallery, name: nil).should_not be_valid }
+  it { build_stubbed(:gallery, name: 'a').should_not be_valid }
+  it { build_stubbed(:gallery, name: 'a'*81).should_not be_valid }
+
 
   it "should offer a cover photo" do
     gallery = Gallery.new
