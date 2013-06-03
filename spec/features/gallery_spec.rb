@@ -44,17 +44,17 @@ feature 'Photo management' do
     expect { click_link('Delete Gallery') }.to change(Gallery, :count).by(-1)
   end
 
-  scenario 'create a gallery' do
-    photo = create(:photo, title: 'test photo', user: @user)
-    click_link 'New Gallery'
-    check("cb#{photo.id}")
-    fill_in 'Name', with: 'New Test Gallery'
-    expect { click_button('Save') }.to change(Gallery, :count).by(1)
-    click_link 'My Galleries'
-    expect(page).to have_content 'New Test Gallery'
-    click_link 'New Test Gallery'
-    expect(page).to have_selector('a.thumbnail')
-    expect(page).to have_xpath("//img[@src=\"#{photo.image_url}\"]")
-  end
+  # scenario 'create a gallery' do
+  #   photo = create(:photo, title: 'test photo', user: @user)
+  #   click_link 'New Gallery'
+  #   check("cb#{photo.id}")
+  #   fill_in 'Name', with: 'New Test Gallery'
+  #   expect { click_button('Save') }.to change(Gallery, :count).by(1)
+  #   click_link 'My Galleries'
+  #   expect(page).to have_content 'New Test Gallery'
+  #   click_link 'New Test Gallery'
+  #   expect(page).to have_selector('a.thumbnail')
+  #   expect(page).to have_xpath("//img[@src=\"#{photo.image_url}\"]")
+  # end
 
 end

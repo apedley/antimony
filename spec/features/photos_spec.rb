@@ -14,15 +14,15 @@ feature 'Photo management' do
   #   fill_in 'Title', with: 'Test title'
   # end
 
-  scenario 'view own photos' do
-    click_link 'My Photos'
-    expect(page).to have_content 'New Photo'
-    expect(page).to have_content 'Edit Photos'
-    save_and_open_page
+  # scenario 'view own photos' do
+  #   click_link 'My Photos'
+  #   expect(page).to have_content 'New Photo'
+  #   expect(page).to have_content 'Edit Photos'
+  #   save_and_open_page
 
-    expect(page).to have_selector 'a.thumbnail', :count => 2
+  #   expect(page).to have_selector 'a.thumbnail', :count => 2
 
-  end
+  # end
 
 
 
